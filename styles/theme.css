@@ -1,0 +1,30 @@
+:root {
+  --bg-start: #0b0f1e;
+  --bg-mid: #28134a;
+  --bg-end: #0e2555;
+  --accent: #00c6fb;
+  --purple: #7a00ff;
+}
+
+.gradient-bg {
+  background: radial-gradient(
+      ellipse at top,
+      rgba(122, 0, 255, 0.15) 0%,
+      transparent 50%
+    ),
+    radial-gradient(ellipse at bottom right, rgba(0, 198, 251, 0.1) 0%, transparent 50%),
+    linear-gradient(180deg, var(--bg-start) 0%, var(--bg-mid) 50%, var(--bg-end) 100%);
+  min-height: 100vh;
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    rgba(11, 15, 30, 0.3) 100%
+  );
+  pointer-events: none;
+}
+
