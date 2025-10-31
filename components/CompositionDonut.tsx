@@ -62,7 +62,7 @@ export function CompositionDonut() {
               }}
             />
             <Legend
-              formatter={(value, entry) => {
+              formatter={(value, _entry) => {
                 const item = data.find((d) => d.name === value);
                 return `${value}: ${item?.percentage.toFixed(1)}%`;
               }}

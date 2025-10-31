@@ -1,14 +1,12 @@
 "use client";
 
 import { useWallet } from "@solana/wallet-adapter-react";
-import { useWalletModal } from "@solana/wallet-adapter-react-ui";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import { formatAddress } from "@/lib/format";
 import { useEffect, useState } from "react";
 
 export function WalletConnect() {
   const { publicKey, connected } = useWallet();
-  const { setVisible } = useWalletModal();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {

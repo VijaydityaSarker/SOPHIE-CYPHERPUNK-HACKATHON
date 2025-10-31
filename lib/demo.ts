@@ -42,9 +42,9 @@ export function tickSimulation(
   newPrice: number
 ): PositionState {
   const mode = currentState.mode;
-  let { collateral, debt, composition } = currentState;
+  let { collateral, debt } = currentState;
+  const composition = { ...currentState.composition };
 
-  const currentHealth = calculateHealth(collateral, currentState.price, debt);
   const newHealth = calculateHealth(collateral, newPrice, debt);
   const ltv = calculateLTV(collateral, newPrice, debt);
 
@@ -73,28 +73,18 @@ export function tickSimulation(
     const targetComp = getTargetComposition(alpha);
     const totalValue = collateral * newPrice + composition.susd;
     const targetCollateral = totalValue * targetComp.collateral / newPrice;
-    const targetSusd = totalValue * targetComp.susd;
 
     const collateralDiff = targetCollateral - collateral;
-    const susdDiff = targetSusd - composition.susd;
 
     // Limit the rebalance rate
     const maxCollateralChange = collateral * MAX_REBALANCE_RATE;
-    const maxSusdChange = composition.susd * MAX_REBALANCE_RATE;
 
     let collateralChange = 0;
-    let susdChange = 0;
 
     if (Math.abs(collateralDiff) > maxCollateralChange) {
       collateralChange = Math.sign(collateralDiff) * maxCollateralChange;
     } else {
       collateralChange = collateralDiff;
-    }
-
-    if (Math.abs(susdDiff) > maxSusdChange) {
-      susdChange = Math.sign(susdDiff) * maxSusdChange;
-    } else {
-      susdChange = susdDiff;
     }
 
     // Execute the rebalance

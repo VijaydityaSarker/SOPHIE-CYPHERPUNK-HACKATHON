@@ -1,5 +1,4 @@
 import { Connection, PublicKey } from "@solana/web3.js";
-import * as anchor from "@coral-xyz/anchor";
 
 // Stub Anchor client - replace with actual IDL and program ID later
 export async function getAnchorClient() {
