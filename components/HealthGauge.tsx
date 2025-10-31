@@ -30,7 +30,7 @@ export function HealthGauge() {
               cx="64"
               cy="64"
               r="50"
-              stroke={health >= 1.4 ? "#10b981" : health >= 1.2 ? "#f59e0b" : "#ef4444"}
+              stroke={health >= 1.5 ? "#10b981" : health >= 1.35 ? "#f59e0b" : "#ef4444"}
               strokeWidth="8"
               fill="none"
               strokeLinecap="round"

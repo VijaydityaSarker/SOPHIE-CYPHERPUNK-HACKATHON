@@ -9,15 +9,15 @@ export function PositionCard() {
   const { publicKey } = useWallet();
   const position = useStore((state) => state.position);
   const healthColor =
-    position.health >= 1.4
+    position.health >= 1.5
       ? "text-green-400"
-      : position.health >= 1.2
+      : position.health >= 1.35
       ? "text-amber-400"
       : "text-red-400";
   const healthBg =
-    position.health >= 1.4
+    position.health >= 1.5
       ? "bg-green-500/20 border-green-500/50"
-      : position.health >= 1.2
+      : position.health >= 1.35
       ? "bg-amber-500/20 border-amber-500/50"
       : "bg-red-500/20 border-red-500/50";
 
@@ -72,9 +72,9 @@ export function PositionCard() {
       <div className={cn("mt-4 p-3 rounded-lg border", healthBg)}>
         <div className="text-xs text-gray-300 mb-1">Health Status</div>
         <div className={cn("text-sm font-medium", healthColor)}>
-          {position.health >= 1.4
+          {position.health >= 1.5
             ? "Healthy"
-            : position.health >= 1.2
+            : position.health >= 1.35
             ? "Warning"
             : "Critical"}
         </div>
